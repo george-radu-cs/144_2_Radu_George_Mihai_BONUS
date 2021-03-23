@@ -100,18 +100,25 @@ Scrieti un program care contine urmatoarele:
 
 ## compilare si rulare
 
-Script bash
-
-> ./build.sh
-
 Cmake
 
-> cmake CMakeLists.txt && make
+```
+cmake CMakeLists.txt && make
+```
+
 
 Rulare Program
 
-> ./144_2_Radu_George_Mihai_BONUS
+```
+./144_2_Radu_George_Mihai_BONUS
+```
 
 ## notite
 
+Am adaugat definitiile metodelor din cerinta, fara implementare.
+
 ## TODO
+
+- de adaugat implementarea metodelor din clase
+
+- de realizat cerinta din main

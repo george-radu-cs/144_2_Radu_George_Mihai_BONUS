@@ -6,44 +6,46 @@
 
 class Stack_List_Vector : public Stack_List, private Vector {
 private:
-  int k; /* pozitia curenta in sensul lui List */
+  int k; /* pozitia curenta in sensul lui List, 0<=k<=n
+          * daca k=0 atunci pozitia se afla inainte de primul element
+          * daca k=i atunci pozitia se afla la elementul i, cu i in [1,n] */
 
 public:
   ////////////////////////////////////////////////////////
   /* implementam metodele pure mostenite din Stack_List */
   ////////////////////////////////////////////////////////
 
-  /* pozitia curenta nu se plaseaza inaintea primului element */
-  virtual void reset() const override;
+  /* pozitia curenta se plaseaza inaintea primului element */
+  virtual void reset() override;
 
   /* pozitia curenta avanseaza un element, daca se poate */
-  virtual bool next() const override;
+  virtual bool next() override;
 
   /* test daca dupa pozitia curenta nu mai sunt elemente */
-  virtual bool end() const override;
+  virtual bool end() override;
 
   /* insereaza un intreg dupa pozitia curenta, daca se poate */
-  virtual bool ins_next(int value) const override;
+  virtual bool ins_next(int value) override;
 
   /* elimina elementul de dupa pozitia curenta, daca exista */
-  virtual bool del_next() const override;
+  virtual bool del_next() override;
 
   /* furnizeaza elementul de dupa pozitia curenta(prin referinta), daca
    * exista, returnam bool  */
-  virtual bool get_next(int &value) const override;
+  virtual bool get_next(int &value) override;
 
   /////////////////////////////////////////////////////////
   /* redefinim operatorii prezenti si in clasele de baza */
   /////////////////////////////////////////////////////////
 
   /* testeaza egal */
-  bool operator==(const Stack_List_Vector&slv) const;
+  bool operator==(Stack_List_Vector &slv);
 
   /* testeaza diferit */
-  bool operator!=(const Stack_List_Vector&slv) const;
+  bool operator!=(Stack_List_Vector &slv);
 
   /* atribuire */
-  Stack_List_Vector &operator=(const Stack_List_Vector&slv);
+  Stack_List_Vector &operator=(Stack_List_Vector &slv);
 };
 
 #endif

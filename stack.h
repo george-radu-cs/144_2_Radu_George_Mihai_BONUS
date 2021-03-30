@@ -5,8 +5,6 @@
 
 class Stack {
 public:
-  Stack();
-
   virtual ~Stack();
 
   ////////////////////
@@ -14,16 +12,16 @@ public:
   ////////////////////
 
   /* videaza stiva curenta */
-  void operator-() const;
+  void operator-();
 
   /* verificam daca stiva this este egala cu stiva stack */
-  bool operator==(const Stack &stack) const;
+  bool operator==(Stack &stack);
 
   /* verificam daca stiva this nu este egala cu stiva stack */
-  bool operator!=(const Stack &stack) const;
+  bool operator!=(Stack &stack);
 
   /* overload operator de atribuire */
-  Stack &operator=(const Stack &stack);
+  Stack &operator=(Stack &stack);
 
   /////////////////////////
   /* metode pure publice */
@@ -31,14 +29,14 @@ public:
 
   /* facem push la un intreg, valoarea o trimitem prin valoare, returnam
    * referinta la stiva curenta pentru a permite push mutiple */
-  virtual Stack &operator<<(int value) const = 0;
+  virtual Stack &operator<<(int value) = 0;
 
   /* facem pop la un intreg, valoarea o trimitem prin referinta, returnam
    * referinta la stiva curenta pentru a permite pop mutiple */
-  virtual Stack &operator>>(int &value) const = 0;
+  virtual Stack &operator>>(int &value) = 0;
 
   /* testam daca stiva este vida */
-  virtual bool operator!() const = 0;
+  virtual bool operator!() = 0;
 };
 
 #endif

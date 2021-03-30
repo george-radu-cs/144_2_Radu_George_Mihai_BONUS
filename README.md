@@ -11,15 +11,18 @@ Grupa: 144
 Scrieti un program care contine urmatoarele:
 
 - clasa abstracta 'stack', care descrie conceptul de stiva de intregi, avand:
-  metode pure publice:
+
+  - metode pure publice:
     operatorii '<<' (push), '>>' (pop), '!' (test stiva vida);
     detalii: '<<', resp. '>>',  au intregul inserat, resp. extras, ca
      parametru prin valoare, resp. referinta; '<<' si '>>' returneaza stiva
      curenta prin referinta (pentru a permite push/pop miltiple); '!'
      returneaza true/false;
-  metode virtuale publice:
+
+  - metode virtuale publice:
     destructor;
-  metode publice:
+
+  - metode publice:
     operatorii '-' (unar, videaza stiva curenta), '==' (testeaza egal) '!='
     (testeaza diferit), '=' (atribuire);
     detalii: '==', '!=', '=' au ca parametru prin referinta o stiva; '-' nu
@@ -27,15 +30,18 @@ Scrieti un program care contine urmatoarele:
       returneaza referinta la stiva curenta; '-', '==', '!=', '=' se vor
       implementa deasupra primitivelor '<<', '>>', '!';
 - functiile independente (ne-prieten pentru 'stack'):
-    operatorii '>>' (citire 'stack' dintr-un 'istream'), '<<' (scriere
+
+  - operatorii '>>' (citire 'stack' dintr-un 'istream'), '<<' (scriere
       'stack'intr-un 'ostream');
-    detalii: '>>' si '<<' au ca parametri prin referinta streamul si stiva si
+
+  - detalii: '>>' si '<<' au ca parametri prin referinta streamul si stiva si
      returneaza prin referinta streamul; ei se vor implementa deasupra
      metodelor publice ale clasei 'stack';
 - clasa abstracta 'list', care descrie conceptul de lista de intregi simplu
     inlantuita, avand o pozitie curenta si permitand inserarea/eliminarea/
     consultarea unui element dupa pozitia curenta; clasa contine:
-  metode publice pure:
+
+  - metode publice pure:
     'reset' (pozitia curenta se plaseaza inaintea primului element);
     'next' (pozitia curenta avanseaza un element, daca se poate);
     'end' (test daca dupa pozitia curenta nu mai sunt elemente);
@@ -46,11 +52,15 @@ Scrieti un program care contine urmatoarele:
      parametru prin valoare, resp. referinta; celelalte metode nu au
      parametri; 'reset' nu returneaza nimic, celelalte metode returneaza
      'true'/'false';
-  metode virtuale publice:
+
+  - metode virtuale publice:
     destructor;
-  metode publice:
+
+  - metode publice:
+
     operatorii '-' (unar, videaza lista curenta), '==' (testeaza egal) '!='
     (testeaza diferit), '=' (atribuire);
+
     detalii: '==', '!=', '=' au ca parametru prin referinta o lista; '-' nu
       returneaza nimic, '==' si '!=' returneaza 'true'/'false', '='
       returneaza referinta la lista curenta; '-', '==', '!=', '=' se vor
@@ -58,10 +68,12 @@ Scrieti un program care contine urmatoarele:
       'del_next', 'get_next'; '==' si '!=' vor lasa la sfarsit lista curenta
       nemodificata, inclusiv in privinta pozitiei curente;
 - clasa 'vector', care descrie conceptul de vector de intregi, avand:
-  membri data privati:
+
+  - membri data privati:
     'buf' (pointer la 'int', retine adresa zonei cu elementele, care este
      alocata dinamic), 'n' ('int', numarul de elemente);
-  metode publice:
+
+  - metode publice:
     constructor implicit (initializeaza 'buf' si 'n' pentru vectorul vid);
     constructor de conversie dinspre 'int' (creaza un vector cu un intreg);
     constructor de copiere;
@@ -76,17 +88,23 @@ Scrieti un program care contine urmatoarele:
     'length' (fara parametri, returneaza 'n');
 - clasa abstracta 'stack_list', care descrie implementarea clasei 'stack'
    deasupra clasei 'list'; clasa are urmetoarele:
-  mosteneste public 'stack' si privat 'list';
-  destructor public virtual;
-  mentine pure metodele lui 'list': 'reset', ''next', 'end', 'ins_next',
+
+  - mosteneste public 'stack' si privat 'list';
+
+  - destructor public virtual;
+
+  - mentine pure metodele lui 'list': 'reset', ''next', 'end', 'ins_next',
     'del_next', 'get_next';
-  implementeaza metodele pure mostenite din 'stack': '<<', '>>', '!',
+
+  - implementeaza metodele pure mostenite din 'stack': '<<', '>>', '!',
     deasupra metodelor pure metodele lui 'list': 'reset', ''next', 'end',
     'ins_next', 'del_next', 'get_next';
 - clasa 'stack_list_vector', care implementeaza clasa 'stack_list' deasupra
     clasei 'vector'; clasa are urmatoarele:
-  mosteneste public 'stack_list' si privat 'vector';
-  membru data privat 'k' ('int', pozitia curenta in sensul lui 'list');  
+
+  - mosteneste public 'stack_list' si privat 'vector';
+
+  - membru data privat 'k' ('int', pozitia curenta in sensul lui 'list');  
   implementeaza metodele pure mostenite din 'stack_list': 'reset', ''next',
    'end', 'ins_next','del_next', 'get_next', deasupra metodelor lui 'vector';
   redefineste operatorii prezenti si in clasele de baza '==', '!=', '=', a.i.
@@ -102,23 +120,20 @@ Scrieti un program care contine urmatoarele:
 
 Cmake
 
-```
+```bash
 cmake CMakeLists.txt && make
 ```
 
-
 Rulare Program
 
-```
+```bash
 ./144_2_Radu_George_Mihai_BONUS
 ```
 
-## notite
-
-Am adaugat definitiile metodelor din cerinta, fara implementare.
-
 ## TODO
 
-- de adaugat implementarea metodelor din clase
-
 - de realizat cerinta din main
+
+- OBS: s ar putea atunci cand faci egalitatea, afisarea, atribuirea, etc sa se
+goleasca lista, fa cateva teste, posibil fix schimba din parametru prin referinta
+in parametru prin valoare

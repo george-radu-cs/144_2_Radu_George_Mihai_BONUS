@@ -3,9 +3,9 @@
 
 class Vector {
 private:
-  int *v;
-  int *buf;
-  int n;
+  int *buf; /* adresa zonei cu elementele, alocata dinamic, inexararea
+               elementelor se face de la 1 */
+  int n;    /* nr de elemente */
 
 public:
   /* initializam vectorul vid */
@@ -15,7 +15,7 @@ public:
   Vector(int x);
 
   /* constructor de copiere */
-  Vector(const Vector &vector);
+  Vector(Vector &vector);
 
   /* destructorul elibereaza resursele vectorului */
   ~Vector();
@@ -25,14 +25,14 @@ public:
   int &operator[](int index);
 
   /* operator de atribuire */
-  Vector &operator=(const Vector &vector);
+  Vector &operator=(Vector &vector);
 
   /* realoca/truncheaza vectorul la dimensiunea data ca parametru si
    * returneaza true/false in functie de succes/esec */
-  bool truncate(int size) const;
+  bool truncate(int size);
 
   /* returnam lungimea vectorului, i.e. n */
-  int length() const {return n;};
+  int length() { return n; };
 };
 
 #endif

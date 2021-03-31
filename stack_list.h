@@ -19,10 +19,6 @@ public:
   /* testam daca stiva este vida */
   virtual bool operator!() override;
 
-  /////////////////////////////////////
-  /* mentinem pure metodele lui list */
-  /////////////////////////////////////
-
   /* pozitia curenta se plaseaza inaintea primului element */
   virtual void reset() override = 0;
 

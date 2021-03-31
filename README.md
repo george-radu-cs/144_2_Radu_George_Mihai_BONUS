@@ -132,8 +132,4 @@ Rulare Program
 
 ## TODO
 
-- de realizat cerinta din main
-
-- OBS: s ar putea atunci cand faci egalitatea, afisarea, atribuirea, etc sa se
-goleasca lista, fa cateva teste, posibil fix schimba din parametru prin referinta
-in parametru prin valoare
+clean up la cod si comentarii

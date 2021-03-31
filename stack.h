@@ -5,11 +5,7 @@
 
 class Stack {
 public:
-  virtual ~Stack();
-
-  ////////////////////
-  /* metode publice */
-  ////////////////////
+  virtual ~Stack() {}
 
   /* videaza stiva curenta */
   void operator-();
@@ -23,10 +19,6 @@ public:
   /* overload operator de atribuire */
   Stack &operator=(Stack &stack);
 
-  /////////////////////////
-  /* metode pure publice */
-  /////////////////////////
-
   /* facem push la un intreg, valoarea o trimitem prin valoare, returnam
    * referinta la stiva curenta pentru a permite push mutiple */
   virtual Stack &operator<<(int value) = 0;
@@ -38,5 +30,8 @@ public:
   /* testam daca stiva este vida */
   virtual bool operator!() = 0;
 };
+
+std::istream &operator>>(std::istream &in, Stack &stack);
+std::ostream &operator<<(std::ostream &out, Stack &stack);
 
 #endif

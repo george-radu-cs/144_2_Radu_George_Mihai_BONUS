@@ -73,20 +73,42 @@ bool Stack_List_Vector::get_next(int &value) {
 bool Stack_List_Vector::operator==(Stack_List_Vector &slv) {
   int v1, v2; /* vom retine valorile din cele doua stackuri */
 
+  /* backup pentru cele doua stackuri */
+  int *ls1, *ls2, n{0};
+  ls1 = new int[n];
+  ls2 = new int[n];
+
+  bool elem_egale{true};
   /* cat timp ambele stackuri sunt vide */
-  while (!(*this) && !slv) {
+  while (!(*this) == false && !slv == false) {
     /* facem cate un pop in ambele colectii */
     (*this) >> v1;
     slv >> v2;
+
+    /* salvam elementele */
+    n++;
+    ls1[n - 1] = v1;
+    ls2[n - 1] = v2;
+
     if (v1 != v2) { /* daca cele 2 elemente nu sunt egale */
-      return false;
+      elem_egale = false;
     }
   }
 
-  /* daca am terminat de verificat stackurile element cu element si am vidat cel
-   * putin una, atunci verificam ca ambele sa fie goale ca ultim test de
-   * egalitate */
-  return !(*this) == !slv;
+  /* refacem cele doua stive */
+  for (int i = n - 1; i >= 0; i--) {
+    (*this) << ls1[i];
+    slv << ls2[i];
+  }
+
+  if (!elem_egale) {
+    return false;
+  } else {
+    /* daca am terminat de verificat stackurile element cu element si am vidat
+     * cel putin una, atunci verificam ca ambele sa fie goale ca ultim test de
+     * egalitate */
+    return !(*this) == !slv;
+  }
 }
 
 bool Stack_List_Vector::operator!=(Stack_List_Vector &slv) {
@@ -96,10 +118,18 @@ bool Stack_List_Vector::operator!=(Stack_List_Vector &slv) {
 Stack_List_Vector &Stack_List_Vector::operator=(Stack_List_Vector &slv) {
   Stack::operator-(); /* vidam colectia curenta */
 
-  int x; /* vom retinele elementele din stack pe care trebuie sa le copiem */
-  while (!slv) {  /* cat timp mai sunt elemente in stack */
-    slv >> x;     /* dam pop la stack si salvam in x */
-    (*this) << x; /* dam push la x in stakul this */
+  int x; /* vom retinele elementele din stack la care dam pop */
+  int n{0};
+  int *temp = new int[n]; /* vom retine elementele din stack pentru copiere,
+                             restaurare */
+  while (!slv == false) { /* cat timp mai sunt elemente in stack */
+    slv >> x;             /* dam pop la stack si salvam in x */
+    n++;
+    temp[n - 1] = x;
+  }
+  for (int i = n - 1; i >= 0; i--) {
+    (*this) << temp[i]; /* dam push la x in stackul this */
+    slv << temp[i];     /* restauram stack */
   }
 
   return *this;

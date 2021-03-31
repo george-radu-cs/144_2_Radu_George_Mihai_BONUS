@@ -6,13 +6,7 @@ private:
   int *current_position;
 
 public:
-  List();
-
-  virtual ~List();
-
-  ////////////////////
-  /* metode publice */
-  ////////////////////
+  virtual ~List() {}
 
   /* videaza lista curenta */
   void operator-();
@@ -26,9 +20,6 @@ public:
   /* atribuire */
   List &operator=(List &list);
 
-  /////////////////////////
-  /* metode publice pure */
-  /////////////////////////
   /* pozitia curenta se plaseaza inaintea primului element */
   virtual void reset() = 0;
 

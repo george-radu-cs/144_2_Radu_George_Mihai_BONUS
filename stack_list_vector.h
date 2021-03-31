@@ -11,10 +11,6 @@ private:
           * daca k=i atunci pozitia se afla la elementul i, cu i in [1,n] */
 
 public:
-  ////////////////////////////////////////////////////////
-  /* implementam metodele pure mostenite din Stack_List */
-  ////////////////////////////////////////////////////////
-
   /* pozitia curenta se plaseaza inaintea primului element */
   virtual void reset() override;
 
@@ -33,10 +29,6 @@ public:
   /* furnizeaza elementul de dupa pozitia curenta(prin referinta), daca
    * exista, returnam bool  */
   virtual bool get_next(int &value) override;
-
-  /////////////////////////////////////////////////////////
-  /* redefinim operatorii prezenti si in clasele de baza */
-  /////////////////////////////////////////////////////////
 
   /* testeaza egal */
   bool operator==(Stack_List_Vector &slv);

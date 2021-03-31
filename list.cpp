@@ -1,9 +1,5 @@
 #include "list.h"
 
-List::List() {}
-
-List::~List() {}
-
 void List::operator-() {
   /* reseteam pozitia curenta a listei */
   this->reset();

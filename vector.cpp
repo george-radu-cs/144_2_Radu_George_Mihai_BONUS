@@ -56,8 +56,7 @@ Vector &Vector::operator=(Vector &vector) {
 }
 
 bool Vector::truncate(int size) {
-  if (n != size) { /* daca sizeul este cat lungimea nu are sens sa mai truncam
-                      trunchierea */
+  if (n != size) { /* daca sizeul este cat lungimea nu mai facem trunchierea */
     int last_size = n;
     int *buf_copy =
         new int[n + 1];            /* facem un vector temporar pentru copiere */
@@ -69,7 +68,7 @@ bool Vector::truncate(int size) {
     if (size < n) {
       n = size;
     }
-    for (int i = 0; i <= n; i++) { /* copiem datele in noul vector resized  */
+    for (int i = 0; i <= n; i++) { /* copiem datele in noul vector resized */
       buf[i] = buf_copy[i];
     }
 

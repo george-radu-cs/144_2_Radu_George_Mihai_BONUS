@@ -1,34 +1,31 @@
 #include "stack_list_vector.h"
 
 int main() {
-  /* TODO
-  - in programul principal, se citeste 's' de tip 'stack_list_vector' (folosind
-  '>>' pentru 'stack'), se atribuie 's' lui 't' (de acelasi tip), se afisaza
-  't' de doua ori (folosind '<<' pentru 'stack'), se inverseaza 't' intr-o
-  stiva 'r' (folosind push, pop, test vida), se afisaza 'r', se testeaza
-  daca 's' si 'r' sunt egale (folosind '==') si se afisaza un mesaj adecvat. */
+  Stack_List_Vector s, t;
+  std::cin >> s;
+  /* std::cout << s; */
+  t = s;
+  std::cout << "afisam t: " << t;
+  std::cout << "afisam t: " << t;
 
-  /* Stack_List_Vector s, t; */
-  /* Stack &st{s}; */
-  /* std::cin >> st; */
-  /* t = s; */
-  /* st = t; */
-  /* std:: cin >> st; */
-  /* std:: cin >> st; */
+  /* inversam t in stiva r */
+  Stack_List_Vector r;
+  int x; /* vom retine elementele din t la care vom face pop */
+  while (!t == false) {
+    t >> x;
+    r << x;
+  }
+  std::cout << "afisam r: " << r;
 
-  /* TODO stack este abstracta nu putem crea un obiect de tip stack */
-  /* Stack r; */
+  /* din moment ce inversam stiva t in r, t != r, stim deja t==s => r != s */
+  if (s == r) {
+    std::cout << "\nStiva s este egala cu stiva r.\n";
+  } else {
+    std::cout << "\nStiva s nu este egala cu stiva r.\n";
+  }
 
-  /* teste pentru vector */
-  /* Vector v(2); */
-  /* for (int i = 1; i <= v.length(); i++) { */
-  /*   std::cout << i << ":" << v[i] << "\n"; */
-  /* } */
-
-  /* v[10]; */
-  /* for (int i = 1; i <= v.length(); i++) { */
-  /*   std::cout << i << ":" << v[i] << "\n"; */
-  /* } */
+  /* std::cout << s; */
+  /* std::cout << r; */
 
   return 0;
 }

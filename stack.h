@@ -5,6 +5,10 @@
 
 class Stack {
 public:
+  /* constructor de initializare */
+  Stack() {}
+
+  /* destructor virtual */
   virtual ~Stack() {}
 
   /* videaza stiva curenta */

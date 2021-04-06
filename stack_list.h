@@ -6,6 +6,10 @@
 
 class Stack_List : public Stack, private List {
 public:
+  /* constructor de initializare */
+  Stack_List() : Stack(), List() {}
+
+  /* destructor virtual */
   virtual ~Stack_List();
 
   /* facem push la un intreg, valoarea o trimitem prin valoare, returnam

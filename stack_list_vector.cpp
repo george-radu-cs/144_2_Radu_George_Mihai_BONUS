@@ -1,5 +1,14 @@
 #include "stack_list_vector.h"
 
+Stack_List_Vector::Stack_List_Vector() : Stack_List(), Vector() {}
+
+Stack_List_Vector::Stack_List_Vector(int x) : Stack_List(), Vector(x) {}
+
+Stack_List_Vector::Stack_List_Vector(const Stack_List_Vector &slv)
+    : Stack_List(), Vector(slv) {}
+
+Stack_List_Vector::~Stack_List_Vector() {}
+
 void Stack_List_Vector::reset() {
   /* in vector pozitia 0 reprezinta pozitia de dinainte de primul element, fie
    * ca colectia este vida sau nu */
@@ -32,7 +41,13 @@ bool Stack_List_Vector::ins_next(int value) {
     for (int i = length() + 1; i > k + 1; i--) {
       (*this)[i] = (*this)[i - 1];
     }
-    (*this)[k + 1] = value; /* inseram valoarea dupa pozitia curenta */
+    if (-CAPAT_INTERVAL <= value && value <= CAPAT_INTERVAL) {
+      (*this)[k + 1] = value; /* inseram valoarea dupa pozitia curenta */
+    } else {
+      std::cout << value << " nu se afla in intervalul [" << -CAPAT_INTERVAL
+                << "," << CAPAT_INTERVAL << "], vom inlocui cu 0.\n";
+      (*this)[k + 1] = 0; /* inseram valoarea dupa pozitia curenta */
+    }
 
     return true; /* daca am inserat cu succes */
   } else {

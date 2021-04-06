@@ -6,6 +6,13 @@ private:
   int *current_position;
 
 public:
+  /* constructor de initializare */
+  List() : current_position(nullptr) {}
+
+  /* constructor cu parametru */
+  List(int *cp) : current_position(cp) {}
+
+  /* destructor virtual */
   virtual ~List() {}
 
   /* videaza lista curenta */

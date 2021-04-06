@@ -7,6 +7,10 @@ private:
                elementelor se face de la 1 */
   int n;    /* nr de elemente */
 
+protected:
+  static const int CAPAT_INTERVAL{100}; /* vectorul poate contine informatii
+                                           doar din intervalul [-100, 100] */
+
 public:
   /* initializam vectorul vid */
   Vector();
@@ -15,7 +19,7 @@ public:
   Vector(int x);
 
   /* constructor de copiere */
-  Vector(Vector &vector);
+  Vector(const Vector &vector);
 
   /* destructorul elibereaza resursele vectorului */
   ~Vector();

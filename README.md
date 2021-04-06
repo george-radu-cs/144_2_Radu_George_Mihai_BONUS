@@ -129,7 +129,3 @@ Rulare Program
 ```bash
 ./144_2_Radu_George_Mihai_BONUS
 ```
-
-## TODO
-
-clean up la cod si comentarii

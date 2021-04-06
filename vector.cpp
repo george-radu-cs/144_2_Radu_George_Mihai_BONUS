@@ -1,4 +1,5 @@
 #include "vector.h"
+#include <iostream>
 
 Vector::Vector() {
   n = 0;
@@ -8,10 +9,16 @@ Vector::Vector() {
 Vector::Vector(int x) {
   n = 1;
   buf = new int[n + 1];
-  buf[1] = x;
+  if (-CAPAT_INTERVAL <= x && x <= CAPAT_INTERVAL) {
+    buf[1] = x;
+  } else {
+    std::cout << x << " nu se afla in intervalul [" << -CAPAT_INTERVAL << ","
+              << CAPAT_INTERVAL << "], vom inlocui cu 0.\n";
+    buf[1] = 0;
+  }
 }
 
-Vector::Vector(Vector &vector) {
+Vector::Vector(const Vector &vector) {
   n = vector.n;
   buf = new int[n + 1];
   for (int i = 1; i <= n; i++) {
@@ -37,6 +44,10 @@ int &Vector::operator[](int index) {
     for (int i = 0; i <= n; i++) { /* copiem datele in noul vector resized  */
       buf[i] = buf_copy[i];
     }
+    /* initializam restul de elemente cu 0 */
+    for (int i = n + 1; i <= index; i++) {
+      buf[i] = 0;
+    }
     n = index; /* marim lungimea */
 
     delete[] buf_copy; /* clean up */
@@ -46,10 +57,14 @@ int &Vector::operator[](int index) {
 }
 
 Vector &Vector::operator=(Vector &vector) {
-  this->n = vector.n;
-  this->buf = new int[n + 1];
-  for (int i = 0; i <= n; i++) {
-    this->buf[i] = vector.buf[i];
+  if (this != &vector) {
+    delete this->buf;
+
+    this->n = vector.n;
+    this->buf = new int[n + 1];
+    for (int i = 0; i <= n; i++) {
+      this->buf[i] = vector.buf[i];
+    }
   }
 
   return *this;

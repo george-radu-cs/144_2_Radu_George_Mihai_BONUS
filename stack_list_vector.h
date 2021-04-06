@@ -11,6 +11,18 @@ private:
           * daca k=i atunci pozitia se afla la elementul i, cu i in [1,n] */
 
 public:
+  /* initializam stv vid */
+  Stack_List_Vector();
+
+  /* constructor de conversie, i.e. creeaza un stv cu un intreg */
+  Stack_List_Vector(int x);
+
+  /* constructor de copiere */
+  Stack_List_Vector(const Stack_List_Vector &slv);
+
+  /* destructorul */
+  ~Stack_List_Vector();
+
   /* pozitia curenta se plaseaza inaintea primului element */
   virtual void reset() override;
 

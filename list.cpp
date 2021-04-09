@@ -41,31 +41,34 @@ bool List::operator==(List &list) {
 bool List::operator!=(List &list) { return !(*this == list); }
 
 List &List::operator=(List &list) {
-  /* resetam pozitia curenta a celor 2 liste */
-  this->reset();
-  list.reset();
+  if (this != &list) { /* nu mai facem atribuirea daca elementul in care vom
+                          salva datele este acelasi din care le luam */
+    /* resetam pozitia curenta a celor 2 liste */
+    this->reset();
+    list.reset();
 
-  /* cat timp list mai are elemente (din ea vrem sa copiem) */
-  while (!list.end()) {
-    int v; /* vom retine elementele din list la fiecare iteratie */
-    if (list.get_next(v)) { /* luam urmatorul element din list */
-      /* inlocuim in this elementul prin stergerea vechiului element si
-       * inserarea altuia */
-      this->del_next();
-      this->ins_next(v);
-    } else {
-      break;
+    /* cat timp list mai are elemente (din ea vrem sa copiem) */
+    while (!list.end()) {
+      int v; /* vom retine elementele din list la fiecare iteratie */
+      if (list.get_next(v)) { /* luam urmatorul element din list */
+        /* inlocuim in this elementul prin stergerea vechiului element si
+         * inserarea altuia */
+        this->del_next();
+        this->ins_next(v);
+      } else {
+        break;
+      }
+
+      /* avansam cu cele 2 liste */
+      this->next();
+      list.next();
     }
 
-    /* avansam cu cele 2 liste */
-    this->next();
-    list.next();
-  }
-
-  /* stergem posibilele elemente din lista this care au ramas din lista anterior
-   * existenta */
-  while (!this->end()) {
-    this->del_next();
+    /* stergem posibilele elemente din lista this care au ramas din lista
+     * anterior existenta */
+    while (!this->end()) {
+      this->del_next();
+    }
   }
 
   return *this;

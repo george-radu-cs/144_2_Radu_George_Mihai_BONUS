@@ -51,21 +51,24 @@ bool Stack::operator==(Stack &stack) {
 bool Stack::operator!=(Stack &stack) { return !((*this) == stack); }
 
 Stack &Stack::operator=(Stack &stack) {
-  -(*this); /* vidam colectia curenta */
+  if (this != &stack) { /* nu mai facem atribuirea daca elementul in care vom
+                          salva datele este acelasi din care le luam */
+    -(*this);          /* vidam colectia curenta */
 
-  int x; /* vom retinele elementele din stack la care dam pop */
-  int n{0};
-  int *temp = new int[n]; /* vom retine elementele din stack pentru copiere,
-                             restaurare */
-  while (!stack) {        /* cat timp mai sunt elemente in stack */
-    stack >> x;           /* dam pop la stack si salvam in x */
-    n++;
-    temp[n - 1] = x;
-  }
+    int x; /* vom retinele elementele din stack la care dam pop */
+    int n{0};
+    int *temp = new int[n]; /* vom retine elementele din stack pentru copiere,
+                               restaurare */
+    while (!stack) {        /* cat timp mai sunt elemente in stack */
+      stack >> x;           /* dam pop la stack si salvam in x */
+      n++;
+      temp[n - 1] = x;
+    }
 
-  for (int i = n - 1; i >= 0; i--) {
-    (*this) << temp[i]; /* dam push la x in stackul this */
-    stack << temp[i];   /* restauram stack */
+    for (int i = n - 1; i >= 0; i--) {
+      (*this) << temp[i]; /* dam push la x in stackul this */
+      stack << temp[i];   /* restauram stack */
+    }
   }
 
   return *this;

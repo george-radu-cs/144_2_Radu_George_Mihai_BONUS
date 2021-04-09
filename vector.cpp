@@ -57,7 +57,8 @@ int &Vector::operator[](int index) {
 }
 
 Vector &Vector::operator=(Vector &vector) {
-  if (this != &vector) {
+  if (this != &vector) { /* nu mai facem atribuirea daca elementul in care vom
+                            salva datele este acelasi din care le luam */
     delete this->buf;
 
     this->n = vector.n;

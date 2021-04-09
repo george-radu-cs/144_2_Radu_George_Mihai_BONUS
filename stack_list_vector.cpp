@@ -131,20 +131,23 @@ bool Stack_List_Vector::operator!=(Stack_List_Vector &slv) {
 }
 
 Stack_List_Vector &Stack_List_Vector::operator=(Stack_List_Vector &slv) {
-  Stack::operator-(); /* vidam colectia curenta */
+  if (this != &slv) {   /* nu mai facem atribuirea daca elementul in care vom
+                           salva datele este acelasi din care le luam */
+    Stack::operator-(); /* vidam colectia curenta */
 
-  int x; /* vom retinele elementele din stack la care dam pop */
-  int n{0};
-  int *temp = new int[n]; /* vom retine elementele din stack pentru copiere,
-                             restaurare */
-  while (!slv == false) { /* cat timp mai sunt elemente in stack */
-    slv >> x;             /* dam pop la stack si salvam in x */
-    n++;
-    temp[n - 1] = x;
-  }
-  for (int i = n - 1; i >= 0; i--) {
-    (*this) << temp[i]; /* dam push la x in stackul this */
-    slv << temp[i];     /* restauram stack */
+    int x; /* vom retinele elementele din stack la care dam pop */
+    int n{0};
+    int *temp = new int[n]; /* vom retine elementele din stack pentru copiere,
+                               restaurare */
+    while (!slv == false) { /* cat timp mai sunt elemente in stack */
+      slv >> x;             /* dam pop la stack si salvam in x */
+      n++;
+      temp[n - 1] = x;
+    }
+    for (int i = n - 1; i >= 0; i--) {
+      (*this) << temp[i]; /* dam push la x in stackul this */
+      slv << temp[i];     /* restauram stack */
+    }
   }
 
   return *this;
